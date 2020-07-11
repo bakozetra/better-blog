@@ -6,6 +6,7 @@ const contentTextarea = document.querySelector('#post-content');
 const authorInput =  document.querySelector('#post-author');
 const sourceInput = document.querySelector('#post-img');
 const addPostForm = document.querySelector('#post-form');
+const errorMessage = document.querySelector("#error-message");
 
 submit.addEventListener('click' , ($event) => {
 const mainPost = document.createElement("div");
@@ -49,5 +50,19 @@ const mainPost = document.createElement("div");
 postList.insertAdjacentElement("beforebegin", mainPost);
    $event.preventDefault();
     addPostForm.reset();
+});
+
+
+
+contentTextarea.addEventListener("input", ($event) =>{
+    if($event.target.value.length < 20) {
+        contentTextarea.classList.add("is-invalid");
+        errorMessage.style.display = "block";
+    }
+    else {
+        contentTextarea.classList.remove("is-invalid");
+        errorMessage.style.display = "none";
+    }
+
 });
  
