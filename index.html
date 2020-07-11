@@ -18,10 +18,10 @@
 		</style>
 	</head>
 	<body>
-		<nav class="navbar sticky-top navbar-light bg-light">
+		<nav class="navbar sticky-top navbar-light bg-light" id="weekend-project">
 			<span class="navbar-brand mb-0 h1">Weekend Project 2</span>
 		</nav>
-		<div class="container">
+		<div class="container" id="container-content";>
 			<div class="offset-2 col-8" id="post-list">
 				<div class="card">
 					<img
@@ -79,6 +79,7 @@
 									rows="3"
 									placeholder="Enter post content"
 									required
+									id="post-content"
 								></textarea>
 								<div class="invalid-feedback hidden" id="error-message">
 									You have to write at least <strong>20</strong> words.
@@ -90,6 +91,7 @@
 									type="text"
 									class="form-control"
 									name="postAuthor"
+									id="post-author"
 									aria-describedby="postTitle"
 									placeholder="Enter post author"
 									required
@@ -101,6 +103,7 @@
 									type="text"
 									class="form-control"
 									name="postImg"
+									id="post-img"
 									aria-describedby="postTitle"
 									placeholder="Enter post author"
 									value="https://picsum.photos/500/200"
@@ -108,7 +111,7 @@
 								/>
 							</div>
 
-							<button type="submit" class="btn btn-primary">
+							<button type="submit" class="btn btn-primary" id="submit-form">
 								Submit
 							</button>
 						</form>
