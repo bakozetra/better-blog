@@ -1,22 +1,11 @@
 console.log('it works');
-/*var submit = document.getElementsByClassName('btn' ,'btn-primary');
-const newBlog = document.getElementById("post-list");
-
-submit.addEventListener("click", ($event) => {
-    var addNewPost = newPost();
-    newBlog.appendChild(addNewPost);
-    $event.preventDefault();
-    document.getElementById("form").reset();
-}); 
-   */
-
 const postList = document.querySelector('#post-list');
 const submit = document.querySelector('#submit-form');
 const titleInput = document.querySelector('#postTitle');
 const contentTextarea = document.querySelector('#post-content');
 const authorInput =  document.querySelector('#post-author');
-const sourceInput = document.getElementsByName('#post-img');
-const addPostForm = document.querySelector('#container-content');
+const sourceInput = document.querySelector('#post-img');
+const addPostForm = document.querySelector('#post-form');
 
 submit.addEventListener('click' , ($event) => {
 const mainPost = document.createElement("div");
@@ -36,6 +25,7 @@ const mainPost = document.createElement("div");
  const title = document.createElement("h5");
  title.classList.add("card-title");
 
+
  const content = document.createElement("p");
  content.classList.add("card-text");
 
@@ -45,10 +35,9 @@ const mainPost = document.createElement("div");
  const footer = document.createElement("div");
  footer.classList.add("card-footer" ,"text-muted");
 
- title.textContent = titleInput.value;
+ title.textContent = titleInput.value + authorInput.value;
  content.textContent = contentTextarea.value;
- authorInput.textContent = authorInput.value;
- sourceInput.textContent = sourceInput.value;
+ button.textContent = "delete entry";
  
  mainPost.appendChild(card);
  card.appendChild(image);
@@ -57,8 +46,7 @@ const mainPost = document.createElement("div");
  cardBody.appendChild(content);
  cardBody.appendChild(button);
  card.appendChild(footer);
-
- addPostForm.appendChild(mainPost);
+postList.insertAdjacentElement("beforebegin", mainPost);
    $event.preventDefault();
     addPostForm.reset();
 });
