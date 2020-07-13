@@ -7,6 +7,9 @@ const authorInput =  document.querySelector('#post-author');
 const sourceInput = document.querySelector('#post-img');
 const addPostForm = document.querySelector('#post-form');
 const errorMessage = document.querySelector("#error-message");
+const button = document.querySelector("#show-form");
+const form = document.querySelector('#form-card');
+
 
 submit.addEventListener('click' , ($event) => {
 const mainPost = document.createElement("div");
@@ -26,15 +29,16 @@ const mainPost = document.createElement("div");
  const title = document.createElement("h5");
  title.classList.add("card-title");
 
-
  const content = document.createElement("p");
  content.classList.add("card-text");
 
- const button = document.createElement("button");
- button.classList.add("btn", "btn-sm","btn-light","btn-delete");
+ const buttonDelete = document.createElement("button");
+ buttonDelete.classList.add("btn", "btn-sm","btn-light","btn-delete");
+
 
  const footer = document.createElement("div");
  footer.classList.add("card-footer" ,"text-muted");
+footer.textContent = newDate;
 
  title.textContent = titleInput.value + authorInput.value;
  content.textContent = contentTextarea.value;
@@ -52,7 +56,16 @@ postList.insertAdjacentElement("beforebegin", mainPost);
     addPostForm.reset();
 });
 
-
+button.addEventListener('click', () =>{
+    if(form.classList.contains('hidden') === true){
+        form.classList.remove('hidden');
+        button.textContent = "hide form";
+    }
+    else {
+        form.classList.add('hidden');
+        button.textContent = "Add a post"; 
+    }
+});
 
 contentTextarea.addEventListener("input", ($event) =>{
     if($event.target.value.length < 20) {
@@ -63,6 +76,12 @@ contentTextarea.addEventListener("input", ($event) =>{
         contentTextarea.classList.remove("is-invalid");
         errorMessage.style.display = "none";
     }
-
 });
+
+const today = new Date();
+const newDate = today.getDate()  + "/" + (today.getMonth()+1) + "/" + today.getFullYear();
+console.log(newDate);
+
+
+
  
