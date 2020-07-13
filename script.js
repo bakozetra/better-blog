@@ -1,4 +1,6 @@
 console.log('it works');
+// Grab the element we need
+
 const postList = document.querySelector('#post-list');
 const submit = document.querySelector('#submit-form');
 const titleInput = document.querySelector('#postTitle');
@@ -10,6 +12,7 @@ const errorMessage = document.querySelector("#error-message");
 const button = document.querySelector("#show-form");
 const form = document.querySelector('#form-card');
 
+// add event listener for submit
 
 submit.addEventListener('click' , ($event) => {
 const mainPost = document.createElement("div");
@@ -35,10 +38,15 @@ const mainPost = document.createElement("div");
  const buttonDelete = document.createElement("button");
  buttonDelete.classList.add("btn", "btn-sm","btn-light","btn-delete");
 
-
  const footer = document.createElement("div");
  footer.classList.add("card-footer" ,"text-muted");
-footer.textContent = newDate;
+
+ // Generate the date today
+
+ const today = new Date();
+ const newDate = today.getDate()  + "/" + (today.getMonth()+1) + "/" + today.getFullYear();
+ console.log(newDate);
+ footer.textContent = newDate;
 
  title.textContent = titleInput.value + authorInput.value;
  content.textContent = contentTextarea.value;
@@ -56,6 +64,8 @@ postList.insertAdjacentElement("beforebegin", mainPost);
     addPostForm.reset();
 });
 
+// add event listener for button 
+
 button.addEventListener('click', () =>{
     if(form.classList.contains('hidden') === true){
         form.classList.remove('hidden');
@@ -67,20 +77,21 @@ button.addEventListener('click', () =>{
     }
 });
 
+// Add event listener for content textarea 
+
 contentTextarea.addEventListener("input", ($event) =>{
     if($event.target.value.length < 20) {
+        submit.setAttribute('disabled' , 'true');
         contentTextarea.classList.add("is-invalid");
         errorMessage.style.display = "block";
     }
     else {
+        submit.setAttribute('disabled');
         contentTextarea.classList.remove("is-invalid");
         errorMessage.style.display = "none";
     }
 });
 
-const today = new Date();
-const newDate = today.getDate()  + "/" + (today.getMonth()+1) + "/" + today.getFullYear();
-console.log(newDate);
 
 
 
