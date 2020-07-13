@@ -66,10 +66,10 @@ postList.insertAdjacentElement("beforebegin", mainPost);
 
 // add event listener for button 
 
-button.addEventListener('click', () =>{
-    if(form.classList.contains('hidden') === true){
+button.addEventListener('click', () => {
+    if(form.classList.contains('hidden')) {
         form.classList.remove('hidden');
-        button.textContent = "hide form";
+        button.textContent = "Hide form";
     }
     else {
         form.classList.add('hidden');
@@ -79,14 +79,14 @@ button.addEventListener('click', () =>{
 
 // Add event listener for content textarea 
 
-contentTextarea.addEventListener("input", ($event) =>{
+contentTextarea.addEventListener("input", ($event) => {
     if($event.target.value.length < 20) {
         submit.setAttribute('disabled' , 'true');
         contentTextarea.classList.add("is-invalid");
         errorMessage.style.display = "block";
     }
     else {
-        submit.setAttribute('disabled');
+        submit.removeAttribute('disabled');
         contentTextarea.classList.remove("is-invalid");
         errorMessage.style.display = "none";
     }
